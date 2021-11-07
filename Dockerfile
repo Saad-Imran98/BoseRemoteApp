@@ -8,7 +8,7 @@ WORKDIR /root/
 COPY --from=ui-build /usr/src/app/boseremote/build ./boseremote/build
 COPY boseApi/package*.json ./boseApi/
 RUN cd boseApi && npm install
-COPY boseApi/bin/www ./boseApi/
+COPY . .
 
 EXPOSE 2023
 

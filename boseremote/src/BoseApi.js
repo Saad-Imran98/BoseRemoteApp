@@ -1,6 +1,6 @@
 
 export const getVolume = function() {
-    const url = "http://localhost:2023/getVolume";
+    const url = "/getVolume";
     const options = {
         'method': 'GET',
     }
@@ -16,7 +16,7 @@ export const getVolume = function() {
 }
 
 export const increaseVolume = function() {
-    const url = "http://localhost:2023/increaseVolume";
+    const url = "/increaseVolume";
     const options = {
         'method': 'POST',
     }
@@ -32,7 +32,7 @@ export const increaseVolume = function() {
 }
 
 export const decreaseVolume = function() {
-    const url = "http://localhost:2023/decreaseVolume";
+    const url = "/decreaseVolume";
 
     const options = {
         'method': 'POST',
