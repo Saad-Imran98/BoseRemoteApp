@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const parseString = require('xml2js').parseString;
 const http = require('http');
+const path = require('path');
 
 function getVolume() {
   const url = "http://192.168.1.113:8090/volume";
@@ -115,19 +116,11 @@ function decreaseVolume() {
   })
 }
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.use(express.static(path.resolve(__dirname, '../../boseremote/build')));
 
 router.get('/info',function(req,res,next){
   res.send({'info': "welcome to the bose api made by saad imran"})
 })
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
 router.get('/getVolume', function(req,res,next) {
   getVolume().then((volume) => {
@@ -156,5 +149,10 @@ router.post('/decreaseVolume', function(req,res,next) {
     res.send(volume);
   }).catch((err) => res.send(err));
 })
+
+// All other GET requests not handled before will return our React app
+router.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../boseremote/build', 'index.html'));
+});
 
 module.exports = router;
