@@ -5,11 +5,10 @@ const http = require('http');
 const path = require('path');
 
 function getVolume() {
-  const url = "http://192.168.1.113:8090/volume";
   return new Promise((resolve, reject) => {
 
     const options = {
-      hostname: '192.168.1.113',
+      hostname: Bose_Speaker_IP,
       port: 8090,
       path: '/volume',
       method: 'GET'
@@ -45,7 +44,7 @@ function increaseVolume() {
       volume +=1;
       const body = `<volume>${volume}</volume>`;
       const options = {
-        hostname: '192.168.1.113',
+        hostname: Bose_Speaker_IP,
         port: 8090,
         path: '/volume',
         method: 'POST',
@@ -84,7 +83,7 @@ function decreaseVolume() {
       volume -=1;
       const body = `<volume>${volume}</volume>`;
       const options = {
-        hostname: '192.168.1.113',
+        hostname: Bose_Speaker_IP,
         port: 8090,
         path: '/volume',
         method: 'POST',

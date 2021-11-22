@@ -6,6 +6,12 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/remote');
 
+/**
+ * Change to your speaker's local IP address
+ * @type {string}
+ */
+global.Bose_Speaker_IP = '192.168.113';
+
 var app = express();
 
 app.use(logger('dev'));
